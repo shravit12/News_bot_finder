@@ -30,11 +30,9 @@ async function run(){
   const data = JSON.parse(fs.readFileSync("news-with-real-links.json"));
 
  const browser = await puppeteer.launch({
+  executablePath: "/opt/render/.cache/puppeteer/chrome/linux-146.0.7680.76/chrome-linux64/chrome",
   headless: true,
-  args: [
-    "--no-sandbox",
-    "--disable-setuid-sandbox"
-  ]
+  args: ["--no-sandbox", "--disable-setuid-sandbox"]
 });
 
   const page = await browser.newPage();

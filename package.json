@@ -1,0 +1,19 @@
+{
+  "name": "news-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node news.js && node check-real-links.js && node image-debug.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.13.6",
+    "cheerio": "^1.2.0",
+    "puppeteer": "^24.39.1",
+    "rss-parser": "^3.13.0"
+  }
+}

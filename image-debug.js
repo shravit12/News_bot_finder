@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const token = process.env.GITHUB_TOKEN;
 const fs = require("fs");
 const { execSync } = require("child_process");
 async function getImage(page){
@@ -77,7 +78,7 @@ async function run(){
   try{
 execSync('git config --global user.email "bot@render.com"');
   execSync('git config --global user.name "News Bot"');
-   execSync("git remote add origin https://github.com/shravit12/News_bot_finder.git");
+execSync(`git remote set-url origin https://${token}@github.com/shravit12/News_bot_finder.git`);
     execSync("git add news-final.json");
     execSync('git commit -m "update final news images"');
       execSync("git push origin HEAD:main");

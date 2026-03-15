@@ -1,5 +1,6 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
+const token = process.env.GITHUB_TOKEN;
 const { execSync } = require("child_process");
 function delay(ms){
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -68,7 +69,8 @@ async function run(){
 try {
 execSync('git config --global user.email "bot@render.com"');
   execSync('git config --global user.name "News Bot"');
-   execSync("git remote add origin https://github.com/shravit12/News_bot_finder.git");
+
+execSync(`git remote set-url origin https://${token}@github.com/shravit12/News_bot_finder.git`);
   execSync("git add news-with-real-links.json");
   execSync('git commit -m "update real news links"');
     execSync("git push origin HEAD:main");

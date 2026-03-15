@@ -65,7 +65,7 @@ async function run(){
 try {
 execSync('git config --global user.email "bot@render.com"');
   execSync('git config --global user.name "News Bot"');
-  
+   execSync("git remote add origin https://github.com/shravit12/News_bot_finder.git");
   execSync("git add news-with-real-links.json");
   execSync('git commit -m "update real news links"');
   execSync("git push");

@@ -71,7 +71,9 @@ async function run(){
 
   // 🔴 GitHub push
   try{
-
+execSync('git config --global user.email "bot@render.com"');
+  execSync('git config --global user.name "News Bot"');
+  
     execSync("git add news-final.json");
     execSync('git commit -m "update final news images"');
     execSync("git push");

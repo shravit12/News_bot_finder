@@ -63,7 +63,9 @@ async function run(){
 
   console.log("\n✅ Saved in news-with-real-links.json");
 try {
-
+execSync('git config --global user.email "bot@render.com"');
+  execSync('git config --global user.name "News Bot"');
+  
   execSync("git add news-with-real-links.json");
   execSync('git commit -m "update real news links"');
   execSync("git push");

@@ -54,7 +54,9 @@ console.log("news.json updated");
 
 // push to GitHub
 try {
-
+execSync('git config --global user.email "bot@render.com"');
+  execSync('git config --global user.name "News Bot"');
+  
   execSync("git add news.json");
   execSync('git commit -m "update news json"');
   execSync("git push");

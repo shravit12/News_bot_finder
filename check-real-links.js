@@ -10,9 +10,12 @@ async function run(){
   const data = JSON.parse(fs.readFileSync("news.json"));
 
   const browser = await puppeteer.launch({
-    headless:false
-  });
-
+  headless: true,
+  args: [
+    "--no-sandbox",
+    "--disable-setuid-sandbox"
+  ]
+});
   for(let i=0;i<data.length;i++){
 
     const url = data[i].link;
@@ -68,7 +71,7 @@ execSync('git config --global user.email "bot@render.com"');
    execSync("git remote add origin https://github.com/shravit12/News_bot_finder.git");
   execSync("git add news-with-real-links.json");
   execSync('git commit -m "update real news links"');
-  execSync("git push");
+    execSync("git push origin HEAD:main");
 
   console.log("✅ GitHub updated");
 

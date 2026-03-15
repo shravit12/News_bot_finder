@@ -2,7 +2,7 @@ const Parser = require("rss-parser");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
-
+const { execSync } = require("child_process");
 const parser = new Parser();
 
 async function getFirstImage(url) {
@@ -49,5 +49,21 @@ async function getFirstImage(url) {
   console.log(news);
 
   fs.writeFileSync("news.json", JSON.stringify(news, null, 2));
+   
+console.log("news.json updated");
 
+// push to GitHub
+try {
+
+  execSync("git add news.json");
+  execSync('git commit -m "update news json"');
+  execSync("git push");
+
+  console.log("GitHub updated");
+
+} catch (err) {
+
+  console.log("Git push failed");
+
+}
 })();

@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
-
+const { execSync } = require("child_process");
 async function getImage(page){
 
   const image = await page.evaluate(()=>{
@@ -69,6 +69,20 @@ async function run(){
 
   console.log("\n✅ Images updated in news-final.json");
 
+  // 🔴 GitHub push
+  try{
+
+    execSync("git add news-final.json");
+    execSync('git commit -m "update final news images"');
+    execSync("git push");
+
+    console.log("✅ GitHub updated");
+
+  }catch(err){
+
+    console.log("Git push failed:",err.message);
+
+  }
   await browser.close();
 
 }

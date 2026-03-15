@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
-
+const { execSync } = require("child_process");
 function delay(ms){
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -62,7 +62,19 @@ async function run(){
   );
 
   console.log("\n✅ Saved in news-with-real-links.json");
+try {
 
+  execSync("git add news-with-real-links.json");
+  execSync('git commit -m "update real news links"');
+  execSync("git push");
+
+  console.log("✅ GitHub updated");
+
+} catch (err) {
+
+  console.log("Git push failed:", err.message);
+
+}
   await browser.close();
 }
 
